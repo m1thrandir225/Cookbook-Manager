@@ -31,7 +31,7 @@ namespace CookbookManager2
 
             if(cookbooks != null &&  cookbooks.Count > 0)
             {
-                Application.Run(new MainWindow());
+                Application.Run(new MainWindow(cookbooks));
             } else
             {
                 Application.Run(new WelcomeScreen());

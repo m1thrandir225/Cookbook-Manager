@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace CookbookManager2.DataClasses
 {
-    internal class Ingredient
+    public class Ingredient
     {
         public string Name { get; set; }
 
         public float Quantity { get; set; }
 
+        public Ingredient() { }
         public Ingredient(string _name, float _quantity)
         {
             Name = _name;

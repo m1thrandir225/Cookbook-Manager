@@ -3,19 +3,28 @@
 
 namespace CookbookManager2.DataClasses
 {
-    internal class Cookbook
+    public class Cookbook
     {
         public String Name { get; set; }
 
         public String? Description { get; set; }
 
-        public List<Recipe> Recipes { get; set; } = new List<Recipe>();
+        public List<Recipe> Recipes { get; set; }
 
 
-        public Cookbook(String _name, String? _description)
+        public Cookbook (String _name, String? _description)
         {
             Name = _name;
             Description = _description;
+
+            Recipes = new List<Recipe>();
+        }
+
+        public Cookbook(String _name, String? _description, List<Recipe> _recipes)
+        {
+            Name = _name;
+            Description = _description;
+            Recipes = _recipes;
         }
 
         public List<String> getAllRecipesByName()

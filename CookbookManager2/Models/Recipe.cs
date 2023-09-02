@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 interface IRecipe {
-    UInt64 Id { get; set; }
+    Guid Id { get; set; }
 
     String Name { get; set; }
     List<Ingredient> Ingredients { get; set; }
@@ -24,9 +24,9 @@ interface IRecipe {
 
 namespace CookbookManager2
 {
-    internal class Recipe : IRecipe
+    public class Recipe : IRecipe
     {
-        public UInt64 Id { get; set; }
+        public Guid Id { get; set; }
 
         public String Name { get; set; }
 
@@ -36,14 +36,12 @@ namespace CookbookManager2
 
         public String Image { get; set; }
 
-        public Recipe(UInt64 _id, String _name, String _image) {
+        public Recipe(Guid _id, String _name, String _image, List<Ingredient> _ingredients, List<String> _steps) {
             Id = _id;
             Name = _name;
             Image = _image;
-            Ingredients = new List<Ingredient>();
-
-            Steps = new List<string> { };
-
+            Ingredients = _ingredients;
+            Steps = _steps;
         }
         
 

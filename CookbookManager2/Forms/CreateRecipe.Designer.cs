@@ -106,10 +106,10 @@
             flowLayoutPanel2.Controls.Add(label2);
             flowLayoutPanel2.Controls.Add(AddIngredientButton);
             flowLayoutPanel2.Controls.Add(RemoveIngredient);
-            flowLayoutPanel2.Location = new Point(27, 153);
+            flowLayoutPanel2.Location = new Point(0, 153);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
             flowLayoutPanel2.Padding = new Padding(24, 0, 0, 0);
-            flowLayoutPanel2.Size = new Size(430, 42);
+            flowLayoutPanel2.Size = new Size(442, 42);
             flowLayoutPanel2.TabIndex = 6;
             // 
             // AddIngredientButton

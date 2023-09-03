@@ -175,7 +175,7 @@ namespace CookbookManager2
             flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanel1.Location = new Point(3, 3);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(229, 145);
+            flowLayoutPanel1.Size = new Size(663, 145);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // CookbookNameLabel

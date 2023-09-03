@@ -39,7 +39,8 @@ namespace CookbookManager2.Forms
                 ingredients.Add(newIngredientForm.NewIngredient);
                 IngredientsListView.Items.Add(new ListViewItem(new string[] { newIngredientForm.NewIngredient.Name, newIngredientForm.NewIngredient.Quantity.ToString() }));
 
-            } else
+            }
+            else
             {
                 newIngredientForm.Close();
             }
@@ -137,7 +138,7 @@ namespace CookbookManager2.Forms
                 return;
             }
 
-            if(string.IsNullOrEmpty(recipeImage))
+            if (string.IsNullOrEmpty(recipeImage))
             {
                 errorProvider.SetError(AddImageButton, "Please add a recipe image");
 

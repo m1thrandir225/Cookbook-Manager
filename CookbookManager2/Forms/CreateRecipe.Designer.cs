@@ -48,10 +48,13 @@
             StepsListView = new ListView();
             StepNumberHeader = new ColumnHeader();
             StepHeader = new ColumnHeader();
+            AddImageButton = new Button();
+            RecipePictureBox = new PictureBox();
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
             flowLayoutPanel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)RecipePictureBox).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -88,15 +91,13 @@
             // 
             // flowLayoutPanel1
             // 
-            flowLayoutPanel1.AutoSize = true;
             flowLayoutPanel1.Controls.Add(label1);
             flowLayoutPanel1.Controls.Add(RecipeNameTextBox);
-            flowLayoutPanel1.Dock = DockStyle.Top;
             flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Padding = new Padding(24);
-            flowLayoutPanel1.Size = new Size(907, 147);
+            flowLayoutPanel1.Size = new Size(329, 150);
             flowLayoutPanel1.TabIndex = 5;
             flowLayoutPanel1.WrapContents = false;
             flowLayoutPanel1.Paint += flowLayoutPanel1_Paint;
@@ -172,7 +173,7 @@
             // 
             flowLayoutPanel3.Controls.Add(CancelButton);
             flowLayoutPanel3.Controls.Add(SaveButton);
-            flowLayoutPanel3.Location = new Point(564, 480);
+            flowLayoutPanel3.Location = new Point(564, 581);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
             flowLayoutPanel3.Padding = new Padding(4);
             flowLayoutPanel3.Size = new Size(339, 48);
@@ -255,13 +256,37 @@
             // 
             StepHeader.Text = "Step";
             // 
+            // AddImageButton
+            // 
+            AddImageButton.AutoSize = true;
+            AddImageButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            AddImageButton.Location = new Point(537, 24);
+            AddImageButton.Name = "AddImageButton";
+            AddImageButton.Size = new Size(95, 31);
+            AddImageButton.TabIndex = 12;
+            AddImageButton.Text = "Add Image";
+            AddImageButton.UseVisualStyleBackColor = true;
+            AddImageButton.Click += AddImageButton_Click;
+            // 
+            // RecipePictureBox
+            // 
+            RecipePictureBox.Location = new Point(645, 12);
+            RecipePictureBox.Name = "RecipePictureBox";
+            RecipePictureBox.Size = new Size(252, 135);
+            RecipePictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
+            RecipePictureBox.TabIndex = 13;
+            RecipePictureBox.TabStop = false;
+            RecipePictureBox.UseWaitCursor = true;
+            RecipePictureBox.Visible = false;
+            // 
             // CreateRecipe
             // 
             AcceptButton = SaveButton;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            CancelButton = CancelButton;
-            ClientSize = new Size(907, 540);
+            ClientSize = new Size(907, 641);
+            Controls.Add(RecipePictureBox);
+            Controls.Add(AddImageButton);
             Controls.Add(StepsListView);
             Controls.Add(flowLayoutPanel4);
             Controls.Add(flowLayoutPanel3);
@@ -278,6 +303,7 @@
             flowLayoutPanel3.PerformLayout();
             flowLayoutPanel4.ResumeLayout(false);
             flowLayoutPanel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)RecipePictureBox).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -304,5 +330,7 @@
         private ListView StepsListView;
         private ColumnHeader StepNumberHeader;
         private ColumnHeader StepHeader;
+        private Button AddImageButton;
+        private PictureBox RecipePictureBox;
     }
 }

@@ -34,12 +34,20 @@ namespace CookbookManager2
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             splitContainer1 = new SplitContainer();
             CookbooksTreeView = new TreeView();
-            label1 = new Label();
+            RemoveRecipeButton = new Button();
+            viewExplainerLabel = new Label();
+            RecipesTitle = new Label();
             RecipeListView = new ListView();
+            RecipeName = new ColumnHeader();
+            NumberOfIngredients = new ColumnHeader();
+            NumberOfSteps = new ColumnHeader();
+            ImageName = new ColumnHeader();
             flowLayoutPanel1 = new FlowLayoutPanel();
             CookbookNameLabel = new Label();
             CookbookRecipesTotalLabel = new Label();
+            CookbookDescription = new Label();
             AddRecipeToCookbookButton = new Button();
+            DeleteCookbookButton = new Button();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -68,7 +76,9 @@ namespace CookbookManager2
             // 
             // splitContainer1.Panel2
             // 
-            splitContainer1.Panel2.Controls.Add(label1);
+            splitContainer1.Panel2.Controls.Add(RemoveRecipeButton);
+            splitContainer1.Panel2.Controls.Add(viewExplainerLabel);
+            splitContainer1.Panel2.Controls.Add(RecipesTitle);
             splitContainer1.Panel2.Controls.Add(RecipeListView);
             splitContainer1.Panel2.Controls.Add(flowLayoutPanel1);
             splitContainer1.Panel2.Controls.Add(AddRecipeToCookbookButton);
@@ -84,35 +94,87 @@ namespace CookbookManager2
             CookbooksTreeView.TabIndex = 0;
             CookbooksTreeView.NodeMouseClick += CookbookTreeView_NodeMouseClick;
             // 
-            // label1
+            // RemoveRecipeButton
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(7, 207);
-            label1.Margin = new Padding(4, 16, 3, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(81, 25);
-            label1.TabIndex = 2;
-            label1.Text = "Recipes:";
-            label1.Visible = false;
+            RemoveRecipeButton.AutoSize = true;
+            RemoveRecipeButton.Enabled = false;
+            RemoveRecipeButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            RemoveRecipeButton.Location = new Point(124, 202);
+            RemoveRecipeButton.Name = "RemoveRecipeButton";
+            RemoveRecipeButton.Size = new Size(122, 27);
+            RemoveRecipeButton.TabIndex = 4;
+            RemoveRecipeButton.Text = "Remove Recipe";
+            RemoveRecipeButton.UseVisualStyleBackColor = true;
+            RemoveRecipeButton.Visible = false;
+            RemoveRecipeButton.Click += RemoveRecipeButton_Click;
+            // 
+            // viewExplainerLabel
+            // 
+            viewExplainerLabel.AutoSize = true;
+            viewExplainerLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            viewExplainerLabel.ForeColor = Color.DimGray;
+            viewExplainerLabel.Location = new Point(499, 215);
+            viewExplainerLabel.Name = "viewExplainerLabel";
+            viewExplainerLabel.Size = new Size(164, 15);
+            viewExplainerLabel.TabIndex = 3;
+            viewExplainerLabel.Text = "* double click to view a recipe";
+            viewExplainerLabel.Visible = false;
+            // 
+            // RecipesTitle
+            // 
+            RecipesTitle.AutoSize = true;
+            RecipesTitle.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            RecipesTitle.Location = new Point(9, 167);
+            RecipesTitle.Margin = new Padding(4, 16, 3, 0);
+            RecipesTitle.Name = "RecipesTitle";
+            RecipesTitle.Size = new Size(81, 25);
+            RecipesTitle.TabIndex = 2;
+            RecipesTitle.Text = "Recipes:";
+            RecipesTitle.Visible = false;
             // 
             // RecipeListView
             // 
+            RecipeListView.Columns.AddRange(new ColumnHeader[] { RecipeName, NumberOfIngredients, NumberOfSteps, ImageName });
             RecipeListView.Location = new Point(7, 235);
             RecipeListView.Name = "RecipeListView";
             RecipeListView.Size = new Size(656, 245);
             RecipeListView.TabIndex = 1;
             RecipeListView.UseCompatibleStateImageBehavior = false;
+            RecipeListView.View = View.Details;
+            RecipeListView.Visible = false;
+            RecipeListView.MouseClick += RecipeListView_MouseClick;
+            RecipeListView.MouseDoubleClick += RecipeListView_MouseDoubleClick;
+            // 
+            // RecipeName
+            // 
+            RecipeName.Text = "Name";
+            RecipeName.Width = 160;
+            // 
+            // NumberOfIngredients
+            // 
+            NumberOfIngredients.Text = "No. Ingredients";
+            NumberOfIngredients.Width = 120;
+            // 
+            // NumberOfSteps
+            // 
+            NumberOfSteps.Text = "No.Steps";
+            NumberOfSteps.Width = 120;
+            // 
+            // ImageName
+            // 
+            ImageName.Text = "Image";
+            ImageName.Width = 120;
             // 
             // flowLayoutPanel1
             // 
             flowLayoutPanel1.BackgroundImageLayout = ImageLayout.None;
             flowLayoutPanel1.Controls.Add(CookbookNameLabel);
             flowLayoutPanel1.Controls.Add(CookbookRecipesTotalLabel);
+            flowLayoutPanel1.Controls.Add(CookbookDescription);
             flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanel1.Location = new Point(3, 3);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(229, 105);
+            flowLayoutPanel1.Size = new Size(229, 145);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // CookbookNameLabel
@@ -122,9 +184,9 @@ namespace CookbookManager2
             CookbookNameLabel.Location = new Point(4, 8);
             CookbookNameLabel.Margin = new Padding(4, 8, 3, 3);
             CookbookNameLabel.Name = "CookbookNameLabel";
-            CookbookNameLabel.Size = new Size(83, 32);
+            CookbookNameLabel.Size = new Size(81, 32);
             CookbookNameLabel.TabIndex = 0;
-            CookbookNameLabel.Text = "label1";
+            CookbookNameLabel.Text = "Name";
             CookbookNameLabel.Visible = false;
             // 
             // CookbookRecipesTotalLabel
@@ -134,29 +196,56 @@ namespace CookbookManager2
             CookbookRecipesTotalLabel.Location = new Point(4, 59);
             CookbookRecipesTotalLabel.Margin = new Padding(4, 16, 3, 0);
             CookbookRecipesTotalLabel.Name = "CookbookRecipesTotalLabel";
-            CookbookRecipesTotalLabel.Size = new Size(64, 25);
+            CookbookRecipesTotalLabel.Size = new Size(53, 25);
             CookbookRecipesTotalLabel.TabIndex = 1;
-            CookbookRecipesTotalLabel.Text = "label2";
+            CookbookRecipesTotalLabel.Text = "Total";
             CookbookRecipesTotalLabel.Visible = false;
+            // 
+            // CookbookDescription
+            // 
+            CookbookDescription.AutoSize = true;
+            CookbookDescription.FlatStyle = FlatStyle.Flat;
+            CookbookDescription.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            CookbookDescription.ForeColor = SystemColors.ControlDarkDark;
+            CookbookDescription.Location = new Point(4, 100);
+            CookbookDescription.Margin = new Padding(4, 16, 3, 0);
+            CookbookDescription.Name = "CookbookDescription";
+            CookbookDescription.Size = new Size(74, 17);
+            CookbookDescription.TabIndex = 2;
+            CookbookDescription.Text = "Description";
+            CookbookDescription.Visible = false;
             // 
             // AddRecipeToCookbookButton
             // 
+            AddRecipeToCookbookButton.AutoSize = true;
             AddRecipeToCookbookButton.Enabled = false;
-            AddRecipeToCookbookButton.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            AddRecipeToCookbookButton.Location = new Point(529, 36);
+            AddRecipeToCookbookButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            AddRecipeToCookbookButton.Location = new Point(9, 203);
             AddRecipeToCookbookButton.Name = "AddRecipeToCookbookButton";
-            AddRecipeToCookbookButton.Size = new Size(134, 35);
+            AddRecipeToCookbookButton.Size = new Size(109, 27);
             AddRecipeToCookbookButton.TabIndex = 0;
             AddRecipeToCookbookButton.Text = "Add Recipe";
             AddRecipeToCookbookButton.UseVisualStyleBackColor = true;
             AddRecipeToCookbookButton.Visible = false;
             AddRecipeToCookbookButton.Click += AddRecipeToCookbookButton_Click;
             // 
+            // DeleteCookbookButton
+            // 
+            DeleteCookbookButton.Location = new Point(131, 501);
+            DeleteCookbookButton.Name = "DeleteCookbookButton";
+            DeleteCookbookButton.Size = new Size(107, 23);
+            DeleteCookbookButton.TabIndex = 6;
+            DeleteCookbookButton.Text = "Delete Cookbook";
+            DeleteCookbookButton.UseVisualStyleBackColor = true;
+            DeleteCookbookButton.Visible = false;
+            DeleteCookbookButton.Click += DeleteCookbookButton_Click;
+            // 
             // MainWindow
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1029, 536);
+            Controls.Add(DeleteCookbookButton);
             Controls.Add(splitContainer1);
             Controls.Add(createNewCookbookButton);
             Name = "MainWindow";
@@ -181,7 +270,15 @@ namespace CookbookManager2
         private Label CookbookNameLabel;
         private Label CookbookRecipesTotalLabel;
         private Button AddRecipeToCookbookButton;
-        private Label label1;
+        private Label RecipesTitle;
         private ListView RecipeListView;
+        private Label viewExplainerLabel;
+        private ColumnHeader RecipeName;
+        private ColumnHeader NumberOfIngredients;
+        private ColumnHeader NumberOfSteps;
+        private ColumnHeader ImageName;
+        private Button DeleteCookbookButton;
+        private Button RemoveRecipeButton;
+        private Label CookbookDescription;
     }
 }

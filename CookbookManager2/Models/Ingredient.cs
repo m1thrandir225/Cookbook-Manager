@@ -10,10 +10,10 @@ namespace CookbookManager2.DataClasses
     {
         public string Name { get; set; }
 
-        public float Quantity { get; set; }
+        public string Quantity { get; set; }
 
         public Ingredient() { }
-        public Ingredient(string _name, float _quantity)
+        public Ingredient(string _name, string _quantity)
         {
             Name = _name;
             Quantity = _quantity;

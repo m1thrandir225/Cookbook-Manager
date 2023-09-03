@@ -18,8 +18,11 @@ namespace CookbookManager2.Forms
         public List<string> steps = new();
         public String recipeName = "";
         public String recipeDescription = "";
+        public String recipeImage = "";
 
         ErrorProvider errorProvider = new();
+
+
         public CreateRecipe()
         {
 
@@ -128,12 +131,41 @@ namespace CookbookManager2.Forms
 
             recipeName = RecipeNameTextBox.Text;
 
-            
+
 
             DialogResult = DialogResult.OK;
 
             Close();
 
+        }
+
+        private void AddImageButton_Click(object sender, EventArgs e)
+        {
+            Thread t = new Thread((ThreadStart)(() =>
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "Image files (*.jpg, *.jpeg, *.png) | *.jpg; *.jpeg; *.png";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    RecipePictureBox.Image = new Bitmap(openFileDialog.FileName);
+
+                    recipeImage = openFileDialog.FileName;
+                }
+            }));
+
+            t.SetApartmentState(ApartmentState.STA);
+
+            t.Start();
+
+            t.Join();
+
+           RecipePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+           RecipePictureBox.Show();
+
+            RecipePictureBox.Focus();
+
+               
         }
     }
 }

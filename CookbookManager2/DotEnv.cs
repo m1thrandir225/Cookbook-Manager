@@ -9,6 +9,16 @@ namespace CookbookManager2
     internal class DotEnv
     {
 
+        public static void Init()
+        {
+            var root = Directory.GetCurrentDirectory();
+
+            var dotenv = Path.Combine(root, ".env");
+
+            Load(dotenv);
+
+        }
+
         public static void Load(string filePath)
         {
             if(!File.Exists(filePath))

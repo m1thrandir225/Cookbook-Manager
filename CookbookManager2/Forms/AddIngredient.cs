@@ -26,14 +26,15 @@ namespace CookbookManager2.Forms
         {
             QuantityTextBox_Validating(sender, new CancelEventArgs());
 
-            float quantity = 0;
+            
 
-            if (QuantityTextBox.Text != "")
+            if (string.IsNullOrWhiteSpace(QuantityTextBox.Text))
             {
-                quantity = float.Parse(QuantityTextBox.Text);
+                error.DataSource = QuantityTextBox;
+                error.SetError(QuantityTextBox, "Please enter a valid quantity");
             }
 
-            NewIngredient = new Ingredient(_name: IngredientNameTextBox.Text, _quantity: quantity);
+            NewIngredient = new Ingredient(_name: IngredientNameTextBox.Text, _quantity: QuantityTextBox.Text);
             
             DialogResult = DialogResult.OK;
 

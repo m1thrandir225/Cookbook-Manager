@@ -30,8 +30,9 @@
         {
             label1 = new Label();
             label2 = new Label();
-            textBox1 = new TextBox();
+            CookbookNameTextBox = new TextBox();
             button1 = new Button();
+            CookbookDescriptionTextBox = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -57,15 +58,15 @@
             label2.Text = "To get started, enter your first cookbook's name:";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // textBox1
+            // CookbookNameTextBox
             // 
-            textBox1.BackColor = Color.White;
-            textBox1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(343, 180);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Your first cookbook:";
-            textBox1.Size = new Size(531, 33);
-            textBox1.TabIndex = 2;
+            CookbookNameTextBox.BackColor = Color.White;
+            CookbookNameTextBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            CookbookNameTextBox.Location = new Point(343, 180);
+            CookbookNameTextBox.Name = "CookbookNameTextBox";
+            CookbookNameTextBox.PlaceholderText = "Your first cookbook";
+            CookbookNameTextBox.Size = new Size(531, 33);
+            CookbookNameTextBox.TabIndex = 2;
             // 
             // button1
             // 
@@ -76,14 +77,26 @@
             button1.TabIndex = 3;
             button1.Text = "Continue";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // CookbookDescriptionTextBox
+            // 
+            CookbookDescriptionTextBox.BackColor = Color.White;
+            CookbookDescriptionTextBox.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
+            CookbookDescriptionTextBox.Location = new Point(343, 242);
+            CookbookDescriptionTextBox.Name = "CookbookDescriptionTextBox";
+            CookbookDescriptionTextBox.PlaceholderText = "Cookbook Description";
+            CookbookDescriptionTextBox.Size = new Size(531, 33);
+            CookbookDescriptionTextBox.TabIndex = 4;
             // 
             // WelcomeScreen
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1195, 345);
+            ClientSize = new Size(1195, 396);
+            Controls.Add(CookbookDescriptionTextBox);
             Controls.Add(button1);
-            Controls.Add(textBox1);
+            Controls.Add(CookbookNameTextBox);
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "WelcomeScreen";
@@ -97,7 +110,8 @@
 
         private Label label1;
         private Label label2;
-        private TextBox textBox1;
+        private TextBox CookbookNameTextBox;
         private Button button1;
+        private TextBox CookbookDescriptionTextBox;
     }
 }

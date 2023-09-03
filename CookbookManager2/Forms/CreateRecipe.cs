@@ -28,22 +28,6 @@ namespace CookbookManager2.Forms
 
             InitializeComponent();
         }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             AddIngredient newIngredientForm = new();
@@ -53,9 +37,13 @@ namespace CookbookManager2.Forms
             if (result == DialogResult.OK)
             {
                 ingredients.Add(newIngredientForm.NewIngredient);
+                IngredientsListView.Items.Add(new ListViewItem(new string[] { newIngredientForm.NewIngredient.Name, newIngredientForm.NewIngredient.Quantity.ToString() }));
+
+            } else
+            {
+                newIngredientForm.Close();
             }
 
-            IngredientsListView.Items.Add(new ListViewItem(new string[] { newIngredientForm.NewIngredient.Name, newIngredientForm.NewIngredient.Quantity.ToString() }));
 
         }
 
@@ -63,14 +51,23 @@ namespace CookbookManager2.Forms
         {
             if (IngredientsListView.Items.Count == 0)
             {
+                errorProvider.SetError(IngredientsListView, "Please add at least one ingredient");
                 return;
             }
 
-            var lastItem = IngredientsListView.Items.Count - 1;
+            if (IngredientsListView.SelectedItems.Count > 0)
+            {
+                ingredients.RemoveAt(IngredientsListView.SelectedItems[0].Index);
+                IngredientsListView.Items.RemoveAt(IngredientsListView.SelectedItems[0].Index);
+            }
+            else
+            {
+                var lastItem = IngredientsListView.Items.Count - 1;
 
-            ingredients.RemoveAt(lastItem);
+                ingredients.RemoveAt(lastItem);
 
-            IngredientsListView.Items.RemoveAt(lastItem);
+                IngredientsListView.Items.RemoveAt(lastItem);
+            }
         }
 
         private void AddStepButton_Click(object sender, EventArgs e)
@@ -92,14 +89,25 @@ namespace CookbookManager2.Forms
         {
             if (StepsListView.Items.Count == 0)
             {
+                errorProvider.SetError(StepsListView, "Please add at least one step");
                 return;
             }
 
-            var lastItem = StepsListView.Items.Count - 1;
+            if (StepsListView.SelectedItems.Count > 0)
+            {
+                steps.RemoveAt(StepsListView.SelectedItems[0].Index);
+                StepsListView.Items.RemoveAt(StepsListView.SelectedItems[0].Index);
+            }
+            else
+            {
+                var lastItem = StepsListView.Items.Count - 1;
 
-            steps.RemoveAt(lastItem);
+                steps.RemoveAt(lastItem);
 
-            StepsListView.Items.RemoveAt(lastItem);
+                StepsListView.Items.RemoveAt(lastItem);
+            }
+
+
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -129,12 +137,15 @@ namespace CookbookManager2.Forms
                 return;
             }
 
+            if(string.IsNullOrEmpty(recipeImage))
+            {
+                errorProvider.SetError(AddImageButton, "Please add a recipe image");
+
+                return;
+            }
+
             recipeName = RecipeNameTextBox.Text;
-
-
-
             DialogResult = DialogResult.OK;
-
             Close();
 
         }
@@ -160,12 +171,12 @@ namespace CookbookManager2.Forms
 
             t.Join();
 
-           RecipePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-           RecipePictureBox.Show();
+            RecipePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            RecipePictureBox.Show();
 
             RecipePictureBox.Focus();
 
-               
+
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RecipeView));
             RecipeNameLabel = new Label();
             RecipePictureBox = new PictureBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
@@ -150,6 +151,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(693, 762);
             Controls.Add(flowLayoutPanel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "RecipeView";
             Text = "RecipeView";
             Load += RecipeView_Load;

@@ -89,7 +89,7 @@
             ClientSize = new Size(537, 182);
             Controls.Add(flowLayoutPanel1);
             Name = "CreateCookbook";
-            Text = "CreateCookbook";
+            Text = "Create a new cookbook";
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
             ResumeLayout(false);

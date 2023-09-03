@@ -33,7 +33,7 @@ namespace CookbookManager2
 
             var result = await Controllers.CookbookController.CreateCookbook(cookbook);
 
-            if(result == null)
+            if (result == null)
             {
                 MessageBox.Show("Error creating cookbook");
                 return;

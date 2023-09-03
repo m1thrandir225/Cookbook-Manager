@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddStep));
             label1 = new Label();
             richTextBox1 = new RichTextBox();
             ContinueButton = new Button();
@@ -35,52 +36,31 @@
             // 
             // label1
             // 
-            label1.Dock = DockStyle.Top;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(0, 0);
+            resources.ApplyResources(label1, "label1");
             label1.Name = "label1";
-            label1.Size = new Size(363, 32);
-            label1.TabIndex = 0;
-            label1.Text = "Add a step";
-            label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // richTextBox1
             // 
             richTextBox1.BorderStyle = BorderStyle.FixedSingle;
-            richTextBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            richTextBox1.Location = new Point(12, 84);
+            resources.ApplyResources(richTextBox1, "richTextBox1");
             richTextBox1.Name = "richTextBox1";
-            richTextBox1.ScrollBars = RichTextBoxScrollBars.Vertical;
-            richTextBox1.Size = new Size(339, 154);
-            richTextBox1.TabIndex = 2;
-            richTextBox1.Text = "";
             richTextBox1.Validating += richTextBox1_Validating;
             // 
             // ContinueButton
             // 
-            ContinueButton.AutoSize = true;
-            ContinueButton.Dock = DockStyle.Bottom;
-            ContinueButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            ContinueButton.Location = new Point(0, 354);
-            ContinueButton.Margin = new Padding(16);
+            resources.ApplyResources(ContinueButton, "ContinueButton");
             ContinueButton.Name = "ContinueButton";
-            ContinueButton.RightToLeft = RightToLeft.No;
-            ContinueButton.Size = new Size(363, 31);
-            ContinueButton.TabIndex = 3;
-            ContinueButton.Text = "Continue";
             ContinueButton.UseVisualStyleBackColor = true;
             ContinueButton.Click += ContinueButton_Click;
             // 
             // AddStep
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(363, 385);
             Controls.Add(ContinueButton);
             Controls.Add(richTextBox1);
             Controls.Add(label1);
             Name = "AddStep";
-            Text = "AddStep";
             ResumeLayout(false);
             PerformLayout();
         }

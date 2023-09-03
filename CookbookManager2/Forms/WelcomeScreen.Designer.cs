@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WelcomeScreen));
             label1 = new Label();
             label2 = new Label();
             CookbookNameTextBox = new TextBox();
@@ -99,8 +100,9 @@
             Controls.Add(CookbookNameTextBox);
             Controls.Add(label2);
             Controls.Add(label1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "WelcomeScreen";
-            Text = "WelcomeScreen";
+            Text = "Welcome to Cookbook Manager";
             Load += WelcomeScreen_Load;
             ResumeLayout(false);
             PerformLayout();

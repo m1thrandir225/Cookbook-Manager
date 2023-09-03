@@ -24,18 +24,26 @@ namespace CookbookManager2.Forms
 
         private void ContinueButton_Click(object sender, EventArgs e)
         {
-            QuantityTextBox_Validating(sender, new CancelEventArgs());
-
-            
-
-            if (string.IsNullOrWhiteSpace(QuantityTextBox.Text))
+            if (!ValidateChildren(ValidationConstraints.Enabled))
             {
-                error.DataSource = QuantityTextBox;
+                return;
+            }
+
+            if(string.IsNullOrWhiteSpace(IngredientNameTextBox.Text))
+            {
+                error.SetError(IngredientNameTextBox, "Please enter a valid ingredient name");
+                return;
+
+            }
+
+            if(string.IsNullOrWhiteSpace(QuantityTextBox.Text))
+            {
                 error.SetError(QuantityTextBox, "Please enter a valid quantity");
+                return;
             }
 
             NewIngredient = new Ingredient(_name: IngredientNameTextBox.Text, _quantity: QuantityTextBox.Text);
-            
+
             DialogResult = DialogResult.OK;
 
             Close();
@@ -50,36 +58,21 @@ namespace CookbookManager2.Forms
 
                 error.SetError(IngredientNameTextBox, "Please enter a valid ingredient name");
 
-                e.Cancel = false;
-            }
-            else
-            {
-                error.SetError(IngredientNameTextBox, "");
-
-                e.Cancel = true;
             }
 
         }
 
         private void QuantityTextBox_Validating(object sender, CancelEventArgs e)
         {
-            
+
 
             if (string.IsNullOrWhiteSpace(QuantityTextBox.Text))
             {
                 QuantityTextBox.Focus();
                 error.SetError(QuantityTextBox, "Please enter a valid quantity");
 
-                e.Cancel = false;
-            }
-            else
-            {
-                error.SetError(QuantityTextBox, "");
-
-                e.Cancel = true;
             }
 
-            
         }
     }
 }

@@ -22,6 +22,10 @@ namespace CookbookManager2.Forms
 
         private void ContinueButton_Click(object sender, EventArgs e)
         {
+            if(!ValidateChildren(ValidationConstraints.Enabled))
+            {
+                return;
+            }
 
             NewStep = richTextBox1.Text.ToString();
             DialogResult = DialogResult.OK;
@@ -30,7 +34,7 @@ namespace CookbookManager2.Forms
 
         private void richTextBox1_Validating(object sender, CancelEventArgs e)
         {
-            if(string.IsNullOrWhiteSpace(richTextBox1.Text))
+            if (string.IsNullOrWhiteSpace(richTextBox1.Text))
             {
                 richTextBox1.Focus();
 

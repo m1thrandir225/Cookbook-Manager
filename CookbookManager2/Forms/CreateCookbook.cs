@@ -31,7 +31,8 @@ namespace CookbookManager2.Forms
                 DialogResult = DialogResult.OK;
 
                 Close();
-            } else
+            }
+            else
             {
                 DialogResult = DialogResult.Abort;
                 Close();

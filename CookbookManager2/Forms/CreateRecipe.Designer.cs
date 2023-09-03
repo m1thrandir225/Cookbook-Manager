@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreateRecipe));
             label1 = new Label();
             label2 = new Label();
             RecipeNameTextBox = new TextBox();
             flowLayoutPanel1 = new FlowLayoutPanel();
             flowLayoutPanel2 = new FlowLayoutPanel();
-            button1 = new Button();
+            AddIngredientButton = new Button();
             RemoveIngredient = new Button();
             IngredientsListView = new ListView();
             IngredientName = new ColumnHeader();
@@ -77,7 +78,6 @@
             label2.Size = new Size(121, 30);
             label2.TabIndex = 1;
             label2.Text = "Ingredients";
-            label2.Click += label2_Click;
             // 
             // RecipeNameTextBox
             // 
@@ -100,12 +100,11 @@
             flowLayoutPanel1.Size = new Size(329, 150);
             flowLayoutPanel1.TabIndex = 5;
             flowLayoutPanel1.WrapContents = false;
-            flowLayoutPanel1.Paint += flowLayoutPanel1_Paint;
             // 
             // flowLayoutPanel2
             // 
             flowLayoutPanel2.Controls.Add(label2);
-            flowLayoutPanel2.Controls.Add(button1);
+            flowLayoutPanel2.Controls.Add(AddIngredientButton);
             flowLayoutPanel2.Controls.Add(RemoveIngredient);
             flowLayoutPanel2.Location = new Point(27, 153);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
@@ -113,17 +112,17 @@
             flowLayoutPanel2.Size = new Size(430, 42);
             flowLayoutPanel2.TabIndex = 6;
             // 
-            // button1
+            // AddIngredientButton
             // 
-            button1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.Location = new Point(159, 8);
-            button1.Margin = new Padding(8);
-            button1.Name = "button1";
-            button1.Size = new Size(106, 23);
-            button1.TabIndex = 2;
-            button1.Text = "Add Ingredient";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            AddIngredientButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            AddIngredientButton.Location = new Point(159, 8);
+            AddIngredientButton.Margin = new Padding(8);
+            AddIngredientButton.Name = "AddIngredientButton";
+            AddIngredientButton.Size = new Size(106, 23);
+            AddIngredientButton.TabIndex = 2;
+            AddIngredientButton.Text = "Add Ingredient";
+            AddIngredientButton.UseVisualStyleBackColor = true;
+            AddIngredientButton.Click += button1_Click;
             // 
             // RemoveIngredient
             // 
@@ -142,7 +141,7 @@
             IngredientsListView.Location = new Point(27, 201);
             IngredientsListView.Margin = new Padding(24, 3, 3, 3);
             IngredientsListView.Name = "IngredientsListView";
-            IngredientsListView.Size = new Size(417, 237);
+            IngredientsListView.Size = new Size(415, 237);
             IngredientsListView.TabIndex = 7;
             IngredientsListView.UseCompatibleStateImageBehavior = false;
             IngredientsListView.View = View.Details;
@@ -173,7 +172,7 @@
             // 
             flowLayoutPanel3.Controls.Add(CancelButton);
             flowLayoutPanel3.Controls.Add(SaveButton);
-            flowLayoutPanel3.Location = new Point(564, 581);
+            flowLayoutPanel3.Location = new Point(552, 468);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
             flowLayoutPanel3.Padding = new Padding(4);
             flowLayoutPanel3.Size = new Size(339, 48);
@@ -230,19 +229,19 @@
             flowLayoutPanel4.Controls.Add(label3);
             flowLayoutPanel4.Controls.Add(AddStepButton);
             flowLayoutPanel4.Controls.Add(RemoveStepButton);
-            flowLayoutPanel4.Location = new Point(537, 153);
+            flowLayoutPanel4.Location = new Point(476, 153);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
             flowLayoutPanel4.Padding = new Padding(24, 0, 0, 0);
-            flowLayoutPanel4.Size = new Size(430, 42);
+            flowLayoutPanel4.Size = new Size(415, 42);
             flowLayoutPanel4.TabIndex = 10;
             // 
             // StepsListView
             // 
             StepsListView.Columns.AddRange(new ColumnHeader[] { StepNumberHeader, StepHeader });
-            StepsListView.Location = new Point(564, 201);
+            StepsListView.Location = new Point(476, 201);
             StepsListView.Margin = new Padding(24, 3, 3, 3);
             StepsListView.Name = "StepsListView";
-            StepsListView.Size = new Size(333, 237);
+            StepsListView.Size = new Size(415, 237);
             StepsListView.TabIndex = 11;
             StepsListView.UseCompatibleStateImageBehavior = false;
             StepsListView.View = View.Details;
@@ -250,19 +249,20 @@
             // StepNumberHeader
             // 
             StepNumberHeader.Text = "No.";
-            StepNumberHeader.Width = 150;
+            StepNumberHeader.Width = 80;
             // 
             // StepHeader
             // 
             StepHeader.Text = "Step";
+            StepHeader.Width = 200;
             // 
             // AddImageButton
             // 
             AddImageButton.AutoSize = true;
             AddImageButton.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            AddImageButton.Location = new Point(537, 24);
+            AddImageButton.Location = new Point(27, 487);
             AddImageButton.Name = "AddImageButton";
-            AddImageButton.Size = new Size(95, 31);
+            AddImageButton.Size = new Size(95, 35);
             AddImageButton.TabIndex = 12;
             AddImageButton.Text = "Add Image";
             AddImageButton.UseVisualStyleBackColor = true;
@@ -284,7 +284,7 @@
             AcceptButton = SaveButton;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(907, 641);
+            ClientSize = new Size(907, 534);
             Controls.Add(RecipePictureBox);
             Controls.Add(AddImageButton);
             Controls.Add(StepsListView);
@@ -293,6 +293,7 @@
             Controls.Add(IngredientsListView);
             Controls.Add(flowLayoutPanel2);
             Controls.Add(flowLayoutPanel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "CreateRecipe";
             Text = "Create Recipe";
             flowLayoutPanel1.ResumeLayout(false);
@@ -315,7 +316,7 @@
         private TextBox RecipeNameTextBox;
         private FlowLayoutPanel flowLayoutPanel1;
         private FlowLayoutPanel flowLayoutPanel2;
-        private Button button1;
+        private Button AddIngredientButton;
         private Button RemoveIngredient;
         private ListView IngredientsListView;
         private Button CancelButton;

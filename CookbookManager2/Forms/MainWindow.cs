@@ -9,6 +9,8 @@ namespace CookbookManager2
 
         public List<Recipe> Recipes { get; set; }
 
+        ErrorProvider error = new ErrorProvider();
+
         Cookbook selectedCookbook;
 
         public MainWindow(List<DataClasses.Cookbook> _cookbooks)
@@ -254,6 +256,14 @@ namespace CookbookManager2
 
         private async void RemoveRecipeButton_Click(object sender, EventArgs e)
         {
+
+            if (RecipeListView.SelectedItems.Count == 0)
+            {
+                error.SetError(RecipeListView, "Please select a recipe to remove");
+
+                return;
+            }
+
             Recipe selectedRecipe = Recipes.Single(r => r.Name == RecipeListView.SelectedItems[0].Text);
 
             if (selectedRecipe != null)
@@ -269,9 +279,6 @@ namespace CookbookManager2
                 Recipes.Remove(selectedRecipe);
 
                 RecipeListView.Items.Remove(RecipeListView.SelectedItems[0]);
-
-
-
 
 
                 CookbookRecipesTotalLabel.Text = $"Total Recipes: {Recipes.Count}";
@@ -319,6 +326,8 @@ namespace CookbookManager2
             RemoveRecipeButton.Visible = false;
 
             DeleteCookbookButton.Visible = false;
+
+            CookbookDescription.Visible = false;
 
         }
     }

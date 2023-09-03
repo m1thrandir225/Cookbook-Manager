@@ -30,6 +30,7 @@ namespace CookbookManager2
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             createNewCookbookButton = new Button();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             splitContainer1 = new SplitContainer();
@@ -113,7 +114,7 @@ namespace CookbookManager2
             viewExplainerLabel.AutoSize = true;
             viewExplainerLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             viewExplainerLabel.ForeColor = Color.DimGray;
-            viewExplainerLabel.Location = new Point(499, 215);
+            viewExplainerLabel.Location = new Point(488, 214);
             viewExplainerLabel.Name = "viewExplainerLabel";
             viewExplainerLabel.Size = new Size(164, 15);
             viewExplainerLabel.TabIndex = 3;
@@ -248,6 +249,7 @@ namespace CookbookManager2
             Controls.Add(DeleteCookbookButton);
             Controls.Add(splitContainer1);
             Controls.Add(createNewCookbookButton);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainWindow";
             Text = "Cookbook Manager";
             Load += MainWindow_Load;

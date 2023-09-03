@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddIngredient));
             ContinueButton = new Button();
             IngredientNameTextBox = new TextBox();
             label1 = new Label();
@@ -80,14 +81,16 @@
             // 
             // AddIngredient
             // 
+            AcceptButton = ContinueButton;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoValidate = AutoValidate.EnableAllowFocusChange;
+            AutoValidate = AutoValidate.EnablePreventFocusChange;
             ClientSize = new Size(373, 339);
             Controls.Add(QuantityTextBox);
             Controls.Add(label1);
             Controls.Add(IngredientNameTextBox);
             Controls.Add(ContinueButton);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AddIngredient";
             Text = "Add an ingredient";
             ResumeLayout(false);

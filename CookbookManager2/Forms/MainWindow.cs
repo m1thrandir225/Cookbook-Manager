@@ -185,6 +185,10 @@ namespace CookbookManager2
 
                     RecipeListView.Visible = true;
 
+                    RemoveRecipeButton.Visible = true;
+
+                    RemoveRecipeButton.Enabled = true;
+
 
                 }
             }

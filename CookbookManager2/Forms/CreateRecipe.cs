@@ -11,7 +11,6 @@ using System.Windows.Forms;
 
 namespace CookbookManager2.Forms
 {
-
     public partial class CreateRecipe : Form
     {
         public List<Ingredient> ingredients = new();
@@ -44,8 +43,6 @@ namespace CookbookManager2.Forms
             {
                 newIngredientForm.Close();
             }
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -176,8 +173,6 @@ namespace CookbookManager2.Forms
             RecipePictureBox.Show();
 
             RecipePictureBox.Focus();
-
-
         }
     }
 }
